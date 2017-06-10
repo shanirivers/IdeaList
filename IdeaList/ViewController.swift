@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: Properties
     
@@ -20,7 +20,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Handle textfields's user input through delegate callback
+        ideaTextField.delegate = self
+        
     }
 
      // MARK: Actions
@@ -30,6 +33,18 @@ class ViewController: UIViewController {
         
     }
     
+    
+    // MARK: UITextFieldDelegate Methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool  {
+        ideaTextField.resignFirstResponder() // hide the keyboard
+        return true
+    }
+    
 
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        ideaNameLabel.text = ideaTextField.text
+        ideaTextField.text = ""
+    }
 }
 
