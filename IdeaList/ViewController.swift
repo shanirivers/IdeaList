@@ -18,13 +18,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     
     var notes: String = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Handle textfields's user input through delegate callback
         ideaTextField.delegate = self
         notesTextView.delegate = self
-    }
+   }
 
      // MARK: Actions
     @IBAction func setDefaultLabelText(_ sender: Any) {
@@ -48,25 +49,22 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     }
     
     // MARK: UITextViewDelegate Methods
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
         notes = notesTextView.text
         notesTextView.text = notes
     }
     
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
-    {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
-            notesTextView.resignFirstResponder() // dismiss the keyboard
+            notesTextView.resignFirstResponder()
             return false
         }
         
         return true
+        
     }
-    
-    
-    
-    
     
     
     
