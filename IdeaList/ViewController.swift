@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
-    // MARK: Properties
+    // MARK: - Properties -
     
     @IBOutlet weak var ideaNameLabel: UILabel!
     @IBOutlet weak var ideaTextField: UITextField!
@@ -25,9 +25,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         // Handle textfields's user input through delegate callback
         ideaTextField.delegate = self
         notesTextView.delegate = self
+        
+        // Textview scrolling and keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateTextView(notification:)), name: .UIKeyboardWillChangeFrame, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateTextView(notification:)), name: .UIKeyboardWillHide, object: nil)
    }
 
-     // MARK: Actions
+     // MARK: - Actions -
     @IBAction func setDefaultLabelText(_ sender: Any) {
         ideaNameLabel.text = "This is a test idea"
         notesTextView.text = "This is some test notes here...."
@@ -35,7 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     }
     
     
-    // MARK: UITextFieldDelegate Methods
+    // MARK: - UITextFieldDelegate Methods -
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool  {
         ideaTextField.resignFirstResponder() // hide the keyboard
@@ -48,7 +53,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         ideaTextField.text = ""
     }
     
-    // MARK: UITextViewDelegate Methods
+    // MARK: - UITextViewDelegate Methods -
     func textViewDidEndEditing(_ textView: UITextView)
     {
         notes = notesTextView.text
@@ -65,6 +70,28 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         return true
         
     }
+    
+    // MARK: Scrolling Feature Action
+    
+    func updateTextView (notification: Notification) {
+        let userInfo = notification.userInfo!
+        
+        let keyboardEndFrameScreenCoordinates = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        let keyboardEndFrame = self.view.convert(keyboardEndFrameScreenCoordinates, to: view.window)
+        
+        if notification.name == Notification.Name.UIKeyboardWillHide {
+            notesTextView.contentInset = UIEdgeInsets.zero
+        } else {
+            notesTextView.contentInset = UIEdgeInsetsMake(0, 0, keyboardEndFrame.height, 0)
+            notesTextView.scrollIndicatorInsets = notesTextView.contentInset
+        }
+        
+        notesTextView.scrollRangeToVisible(notesTextView.selectedRange)
+    }
+    
+    
+    
     
     
     
