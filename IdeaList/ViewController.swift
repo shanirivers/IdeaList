@@ -82,6 +82,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         
         if notification.name == Notification.Name.UIKeyboardWillHide {
             notesTextView.contentInset = UIEdgeInsets.zero
+            notesTextView.scrollIndicatorInsets = notesTextView.contentInset
         } else {
             notesTextView.contentInset = UIEdgeInsetsMake(0, 0, keyboardEndFrame.height, 0)
             notesTextView.scrollIndicatorInsets = notesTextView.contentInset
