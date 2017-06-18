@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbG-5e-NDX">
+                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbG-5e-NDX">
                                 <rect key="frame" x="16" y="20" width="382" height="696"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sA7-Hw-peS">
@@ -58,9 +58,13 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                             </textView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="clf-O5-gP9">
                                                 <rect key="frame" x="0.0" y="609.33333333333348" width="382" height="355.66666666666663"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="clf-O5-gP9" secondAttribute="height" multiplier="343:320" id="SF2-cE-k0n"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="PYl-lV-Zhr" appends="YES" id="PKX-AS-VfS"/>
+                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVG-SS-BWV">
                                                 <rect key="frame" x="0.0" y="965" width="382" height="35"/>
@@ -99,9 +103,15 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <outlet property="ideaNameLabel" destination="BIk-ID-eG1" id="8l3-x0-jPL"/>
                         <outlet property="ideaTextField" destination="hEI-yl-tUJ" id="coa-tz-qI8"/>
                         <outlet property="notesTextView" destination="oGY-DO-5d4" id="bPY-qP-Je4"/>
+                        <outlet property="photoImageView" destination="clf-O5-gP9" id="136-my-dRB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="PYl-lV-Zhr">
+                    <connections>
+                        <action selector="selectImageFromLibrary:" destination="BYZ-38-t0r" id="csa-UH-dMa"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="138.58695652173915"/>
         </scene>

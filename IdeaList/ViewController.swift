@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: - Properties -
     
     @IBOutlet weak var ideaNameLabel: UILabel!
     @IBOutlet weak var ideaTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var photoImageView: UIImageView!
     
     var notes: String = ""
     
@@ -37,6 +38,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         ideaNameLabel.text = "This is a test idea"
         notesTextView.text = "This is some test notes here...."
         
+    }
+    @IBAction func selectImageFromLibrary(_ sender: UITapGestureRecognizer) {
+        
+        // Bring in UIImagePickerController to allow user to pick media form photo library
+        let imagePickerController = UIImagePickerController()
+        
+        // Only bring in images not editted
+        imagePickerController.sourceType = .photoLibrary
+        
+        // Notify VC when user picks image
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     
@@ -91,7 +104,27 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         notesTextView.scrollRangeToVisible(notesTextView.selectedRange)
     }
     
+    // MARK: - UIImagePickerControllerDelegate Methods -
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // Make sure media is original if not display error and back out of method 
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provide this: \(info)")
+        }
+        
+        // Set the imageview to selected image
+        photoImageView.image = selectedImage
+        
+        // Dismiss the picker since image is original
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismiss the picker if user selects cancel
+        dismiss(animated: true, completion: nil)
+    }
     
     
     
