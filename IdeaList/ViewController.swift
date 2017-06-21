@@ -34,11 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
    }
 
      // MARK: - Actions -
-    @IBAction func setDefaultLabelText(_ sender: Any) {
-        ideaNameLabel.text = "This is a test idea"
-        notesTextView.text = "This is some test notes here...."
-        
-    }
+   
     @IBAction func selectImageFromLibrary(_ sender: UITapGestureRecognizer) {
         
         // Bring in UIImagePickerController to allow user to pick media form photo library

@@ -13,6 +13,7 @@
 		F43568741EEA404800768D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43568731EEA404800768D74 /* Assets.xcassets */; };
 		F43568771EEA404800768D74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43568751EEA404800768D74 /* LaunchScreen.storyboard */; };
 		F43568821EEA404800768D74 /* IdeaListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43568811EEA404800768D74 /* IdeaListTests.swift */; };
+		F4DA0A701EF9D5E5001D3AF8 /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DA0A6F1EF9D5E5001D3AF8 /* Idea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		F435687D1EEA404800768D74 /* IdeaListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdeaListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43568811EEA404800768D74 /* IdeaListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaListTests.swift; sourceTree = "<group>"; };
 		F43568831EEA404800768D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4DA0A6F1EF9D5E5001D3AF8 /* Idea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				F435686C1EEA404800768D74 /* AppDelegate.swift */,
 				F435686E1EEA404800768D74 /* ViewController.swift */,
+				F4DA0A6F1EF9D5E5001D3AF8 /* Idea.swift */,
 				F43568701EEA404800768D74 /* Main.storyboard */,
 				F43568731EEA404800768D74 /* Assets.xcassets */,
 				F43568751EEA404800768D74 /* LaunchScreen.storyboard */,
@@ -203,6 +206,7 @@
 			files = (
 				F435686F1EEA404800768D74 /* ViewController.swift in Sources */,
 				F435686D1EEA404800768D74 /* AppDelegate.swift in Sources */,
+				F4DA0A701EF9D5E5001D3AF8 /* Idea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +416,7 @@
 				F43568881EEA404800768D74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F43568891EEA404800768D74 /* Build configuration list for PBXNativeTarget "IdeaListTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +425,7 @@
 				F435688B1EEA404800768D74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
